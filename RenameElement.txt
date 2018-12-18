@@ -1,0 +1,15 @@
+#===================================================================================================
+# 1) Define 3 Input parameter in TI-Process Tab "Advanced", Subtab "Parameters"
+#===================================================================================================
+DimensionName   String
+ElementNameOld    String
+ElementNameNew    String
+
+#===================================================================================================
+# 2) Insert the following code in TI-Process Tab "Advanced", Subtab "Prolog"
+#===================================================================================================
+AttrInsert(DimensionName, '', 'zzP_Rename', 'A');
+AttrPutS(ElementNameNew, DimensionName, ElementNameOld, 'zzP_Rename');
+SwapAliasWithPrincipalName(DimensionName, 'zzP_Rename', 0);
+AttrDelete(DimensionName, 'zzP_Rename');
+
